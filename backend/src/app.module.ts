@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
 import { UsersModule } from './users/users.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     }),
     ArticlesModule,
     UsersModule,
+    CommentsModule,
     AuthenticationModule,
   ],
   controllers: [AppController],

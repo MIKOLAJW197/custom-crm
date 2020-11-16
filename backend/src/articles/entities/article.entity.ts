@@ -1,5 +1,6 @@
 import { User } from './../../users/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Comment } from './../../comments/entities/comment.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinTable, OneToMany } from "typeorm";
 
 @Entity()
 export class Article {
@@ -20,4 +21,11 @@ export class Article {
         (author: User) => author.articles,
     )
     author: User;
+
+    @JoinTable()
+    @OneToMany(
+        () => Comment,
+        (comment: Comment) => comment.article
+    )
+    comments: Comment[];
 }
