@@ -11,7 +11,7 @@ export class Comment {
     text: string;
 
     @Column()
-    createdAt: number;
+    createdAt: string;
 
     @ManyToOne(
         () => User,

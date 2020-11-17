@@ -5,7 +5,7 @@ import { ArticlesService } from './articles.service';
 import { CreateArticleDTO } from './dto/create-article.dto';
 import JwtAuthenticationGuard from 'src/authentication/guards/jwt-authentication.guard';
 import { RequestWithUser } from 'src/authentication/authentication.controller';
-import AuthorGuard from 'src/authentication/guards/author.guard';
+import ArticleAuthorGuard from 'src/authentication/guards/article-author.guard';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('articles')
@@ -30,13 +30,13 @@ export class ArticlesController {
     }
 
     @Patch(':id')
-    @UseGuards(JwtAuthenticationGuard, AuthorGuard)
+    @UseGuards(JwtAuthenticationGuard, ArticleAuthorGuard)
     update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDTO) {
         return this.articleSerivce.update(id, updateArticleDto);
     }
 
     @Delete(':id')
-    @UseGuards(JwtAuthenticationGuard, AuthorGuard)
+    @UseGuards(JwtAuthenticationGuard, ArticleAuthorGuard)
     remove(@Param('id') id: string) {
         return this.articleSerivce.remove(id);
     }

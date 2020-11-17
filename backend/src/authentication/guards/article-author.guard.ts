@@ -1,10 +1,10 @@
-import { ArticlesService } from './../../articles/articles.service';
+import { ArticlesService } from '../../articles/articles.service';
 import { RequestWithUser } from 'src/authentication/authentication.controller';
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Article } from 'src/articles/entities/article.entity';
 
 @Injectable()
-export default class AuthorGuard implements CanActivate {
+export default class ArticleAuthorGuard implements CanActivate {
     constructor(
         private readonly articlesService: ArticlesService
     ) { }

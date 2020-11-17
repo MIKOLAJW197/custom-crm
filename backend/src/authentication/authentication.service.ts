@@ -38,6 +38,7 @@ export class AuthenticationService {
     async getAuthenticatedUser(email: string, plainTextPassword: string) {
         try {
             const user = await this.usersService.getByEmail(email);
+            console.log('auth: ', user);
             await this.verifyPassword(plainTextPassword, user.password);
             user.password = undefined;
             return user;
