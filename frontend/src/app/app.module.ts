@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { ArticlesModule } from './articles/articles.module';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     AuthModule,
     ArticlesModule,
+    AdminModule,
     SharedModule
   ],
   providers: [],
