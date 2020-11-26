@@ -4,13 +4,15 @@ import { SingleArticleComponent } from './single-article/single-article.componen
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesComponent } from './articles.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { CommentsModule } from '../comments/comments.module';
 
 
 
 @NgModule({
   declarations: [SingleArticleComponent, ArticlesListComponent, ArticlesComponent, ArticleDetailsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CommentsModule,
   ]
 })
 export class ArticlesModule { }
