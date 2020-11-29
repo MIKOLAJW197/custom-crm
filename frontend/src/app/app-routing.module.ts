@@ -5,18 +5,23 @@ import { ArticlesComponent } from './articles/articles.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
-
+import { LoggedUserGuard } from './auth/logged-user.guard';
 
 const routes: Routes = [
-  {path: '', component: ArticlesComponent},
-  {path: 'article/:id', component: ArticleDetailsComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'admin', component: AdminPanelComponent}
+  { path: '', component: ArticlesComponent },
+  { path: 'article/:id', component: ArticleDetailsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [LoggedUserGuard],
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
