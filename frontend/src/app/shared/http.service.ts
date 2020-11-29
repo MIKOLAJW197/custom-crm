@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-export const BASIC_URL = 'http://localhost:3000/';
+export const BASIC_URL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,18 @@ export class HttpService {
 
   getArticleById(id: string) {
     return this.http.get(`${BASIC_URL}/articles/${id}`);
+  }
+
+  getArticlesByUser() {
+    return this.http.get(`${BASIC_URL}/articles/user`);
+  }
+
+  addArticle(createArticleDTO: any) {
+    return this.http.post(`${BASIC_URL}/articles`, createArticleDTO);
+  }
+
+  deleteArticle(articleId: string) {
+    return this.http.delete(`${BASIC_URL}/articles/${articleId}`);
   }
 
   // COMMENTS
