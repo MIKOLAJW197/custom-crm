@@ -24,7 +24,7 @@ export class ToastComponent implements OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 }

@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { CommentsSectionComponent } from './comments-section/comments-section.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { SingleCommentComponent } from './single-comment/single-comment.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CommentsSectionComponent, AddCommentComponent, SingleCommentComponent],
-  imports: [
-    CommonModule
+  declarations: [
+    CommentsSectionComponent,
+    AddCommentComponent,
+    SingleCommentComponent,
   ],
-  exports: [CommentsSectionComponent]
+  imports: [CommonModule, FormsModule],
+  exports: [CommentsSectionComponent],
 })
-export class CommentsModule { }
+export class CommentsModule {}

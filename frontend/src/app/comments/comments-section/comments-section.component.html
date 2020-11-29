@@ -4,6 +4,15 @@
     <div>
       <app-single-comment></app-single-comment>
     </div>
-    <app-add-comment></app-add-comment>
+    <ng-container *ngIf="isUserLogged; else elseBlock">
+      <app-add-comment (commentAdded)="onNewCommentAdded()"></app-add-comment>
+    </ng-container>
+    <ng-template #elseBlock>
+      <div class="mt-3">
+        Login first to add comment!
+        <button type="button" class="btn btn-primary btn-sm" (click)="goToLogin()">Log In</button>
+      </div>
+    </ng-template>
+
   </div>
 </div>

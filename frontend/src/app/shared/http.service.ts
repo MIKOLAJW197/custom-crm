@@ -26,4 +26,9 @@ export class HttpService {
   getArticleById(id: string) {
     return this.http.get(`${BASIC_URL}/articles/${id}`);
   }
+
+  // COMMENTS
+  addComment(articleId: string, text: string) {
+    return this.http.post(`${BASIC_URL}/comments/${articleId}`, { text });
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { BASIC_URL, HttpService } from '../shared/http.service';
 
 @Injectable({
@@ -10,19 +10,19 @@ export class AuthService {
 
   loggedUser = new BehaviorSubject(null);
 
-  isUserLogged() {
+  isUserLogged(): boolean {
     return !!this.loggedUser.value;
   }
 
-  setUser(user) {
+  setUser(user): void {
     this.loggedUser.next(user);
   }
 
-  logInUser(email: string, password: string) {
+  logInUser(email: string, password: string): Observable<any> {
     return this.httpService.logIn(email, password);
   }
 
-  registerUser(email: string, password: string) {
+  registerUser(email: string, password: string): Observable<any> {
     return this.httpService.registerNewUser(email, password);
   }
 }
