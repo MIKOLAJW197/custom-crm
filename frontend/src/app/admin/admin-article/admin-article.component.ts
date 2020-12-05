@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpService } from 'src/app/shared/http.service';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -8,6 +8,9 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./admin-article.component.scss'],
 })
 export class AdminArticleComponent implements OnInit {
+  @Output() articleDeleted = new EventEmitter();
+  @Input() article;
+
   constructor(
     private httpService: HttpService,
     private sharedService: SharedService
@@ -16,7 +19,7 @@ export class AdminArticleComponent implements OnInit {
   ngOnInit(): void {}
 
   onArticleDelete(): void {
-    this.httpService.deleteArticle('').subscribe(
+    this.httpService.deleteArticle(this.article.id).subscribe(
       () => {},
       (error) => {
         this.sharedService.openModal.next({

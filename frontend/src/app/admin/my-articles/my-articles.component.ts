@@ -1,34 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/shared/http.service';
-import { SharedService } from 'src/app/shared/shared.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-articles',
   templateUrl: './my-articles.component.html',
   styleUrls: ['./my-articles.component.scss'],
 })
-export class MyArticlesComponent implements OnInit {
-  articlesList = [];
-  constructor(
-    private httpService: HttpService,
-    private sharedService: SharedService
-  ) {}
+export class MyArticlesComponent {
+  @Input() articlesList = [];
+  @Output() articleDeleted = new EventEmitter();
 
-  ngOnInit(): void {
-    // this.getArticles();
-  }
+  constructor() {}
 
-  getArticles(): void {
-    this.httpService.getArticlesByUser().subscribe(
-      (response) => {
-        this.articlesList = response as Array<any>;
-      },
-      (error) => {
-        this.sharedService.openModal.next({
-          isError: true,
-          message: error.message,
-        });
-      }
-    );
+  onArticleDeleted(): void {
+    this.articleDeleted.emit();
   }
 }

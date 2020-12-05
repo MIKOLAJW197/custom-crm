@@ -2,7 +2,8 @@
     <div class="card-body">
         <h1 class="card-title">My articles</h1>
         <div class="list">
-            <app-admin-article></app-admin-article>
+            <app-admin-article *ngFor="let article of articlesList" [article]="article"
+                (articleDeleted)="onArticleDeleted()"></app-admin-article>
         </div>
     </div>
 </div>
