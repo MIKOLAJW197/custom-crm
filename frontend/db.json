@@ -1,0 +1,12 @@
+{
+    "articles": [
+      { "id": 1, "title": "json-server", "description": "short desc", "content": "typicode", "author": {"email": "test@test.pl"}, "comments": [
+        { "id": 1, "text": "Mycomment", "createdAt": 435131231, "author": {"email": "test@test.pl"}, "article": {} }
+      ]
+    }
+    ],
+    "comments": [
+      { "id": 1, "text": "some comment", "createdAt": 435131231, "author": {}, "article": {} }
+    ],
+    "profile": { "name": "typicode" }
+}

@@ -2,7 +2,7 @@
   <div class="card-body">
     <h3 class="card-title">Comments</h3>
     <div>
-      <app-single-comment></app-single-comment>
+      <app-single-comment *ngFor="let comment of comments" [comment]="comment"></app-single-comment>
     </div>
     <ng-container *ngIf="isUserLogged; else elseBlock">
       <app-add-comment (commentAdded)="onNewCommentAdded()"></app-add-comment>

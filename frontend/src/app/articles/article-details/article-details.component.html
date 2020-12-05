@@ -1,11 +1,12 @@
 <div class="d-flex flex-column w-100 align-items-center">
-    <div class="card w-50 mt-5">
-        <div class="card-body">
-          <h5 class="card-title">Article title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Author</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+  <div class="card w-50 mt-5">
+    <div class="card-body">
+      <h5 class="card-title">{{articleDetails.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">By {{articleDetails?.author?.email}}</h6>
+      <p class="card-text">{{articleDetails.content}}</p>
     </div>
+  </div>
 
-    <app-comments-section></app-comments-section>
+  <app-comments-section [comments]="articleDetails?.comments" (newCommentAdded)="refreshArticle()">
+  </app-comments-section>
 </div>

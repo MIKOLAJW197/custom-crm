@@ -21,7 +21,7 @@ export class AddCommentComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     const articleId = this.route.snapshot.paramMap.get('id');
     this.httpService.addComment(articleId, this.commentText).subscribe(
       () => {

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-article',
   templateUrl: './single-article.component.html',
-  styleUrls: ['./single-article.component.scss']
+  styleUrls: ['./single-article.component.scss'],
 })
 export class SingleArticleComponent implements OnInit {
+  @Input() article;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onArticleClick(): void {
+    this.router.navigate([`/article/${this.article.id}`]);
   }
-
 }

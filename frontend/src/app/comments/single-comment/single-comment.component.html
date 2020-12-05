@@ -1,6 +1,8 @@
 <div class="card mt-3">
     <div class="card-body p-2">
-        <h6 class="card-subtitle text-muted mb-0">Author</h6>
-        <p class="card-text">Some comment</p>
+        <h6 class="card-subtitle text-muted mb-0">Author: {{comment?.author?.email}}, created at
+            {{comment.createdAt | date}}
+        </h6>
+        <p class="card-text">{{comment.text}}</p>
     </div>
 </div>

@@ -1,12 +1,11 @@
-<div class="row">
+<div class="row article" (click)="onArticleClick()">
   <div>
-    <h3 class="title">How to Fight Fraud with Artificial Intelligence and Intelligent Analytics</h3>
-    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span> Available Exclusively for Premium Members</p>
-    <p>Could artificial intelligence have been used to prevent the high-profile Target breach? The concept is not so
-      far-fetched. Organizations such as Mastercard and RBS WorldPay have long relied on artificial intelligence to
-      detect fraudulent transaction patterns and prevent card.</p>
+    <h3 class="title">{{article.title}}</h3>
+    <p class="text-muted"><span class="glyphicon glyphicon-lock"></span> {{article.description}}</p>
+    <p> {{article.content}}</p>
 
-    <p class="text-muted">Presented by <a href="#">Ellen Richey</a></p>
+    <p class="text-muted">Presented by <a href="#">{{article?.author?.email}}</a></p>
+    <p class="text-muted">{{article?.comments?.length}} comments</p>
 
   </div>
 </div>

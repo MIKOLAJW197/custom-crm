@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -8,7 +8,10 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./comments-section.component.scss'],
 })
 export class CommentsSectionComponent implements OnInit {
-  isUserLogged;
+  @Input() comments;
+  @Output() newCommentAdded = new EventEmitter();
+
+  isUserLogged: boolean;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -16,8 +19,8 @@ export class CommentsSectionComponent implements OnInit {
     this.isUserLogged = this.authService.isUserLogged();
   }
 
-  onNewCommentAdded() {
-    // refresh list
+  onNewCommentAdded(): void {
+    this.newCommentAdded.emit();
   }
 
   goToLogin(): void {
