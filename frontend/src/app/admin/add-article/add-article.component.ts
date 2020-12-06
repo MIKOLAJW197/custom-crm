@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from 'src/app/shared/http.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -9,6 +9,8 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./add-article.component.scss'],
 })
 export class AddArticleComponent implements OnInit {
+  @Output() newArticleAdded = new EventEmitter();
+
   loading = false;
   newArticleForm: FormGroup;
 
@@ -43,7 +45,7 @@ export class AddArticleComponent implements OnInit {
           isError: false,
           message: 'New article added!',
         });
-        // refresh list
+        this.newArticleAdded.emit();
       },
       (error) => {
         this.loading = false;

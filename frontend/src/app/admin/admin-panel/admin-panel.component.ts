@@ -19,7 +19,7 @@ export class AdminPanelComponent implements OnInit {
     this.getArticles();
   }
 
-  onArticleDeleted(): void {
+  refreshArticleList(): void {
     this.getArticles();
   }
 

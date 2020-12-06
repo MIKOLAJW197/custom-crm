@@ -1,4 +1,4 @@
 <div class="container-fluid h-100 p-5 d-flex justify-content-center">
-    <app-add-article></app-add-article>
-    <app-my-articles [articlesList]="articlesList" (articleDeleted)="onArticleDeleted()"></app-my-articles>
+    <app-add-article (newArticleAdded)="refreshArticleList()"></app-add-article>
+    <app-my-articles [articlesList]="articlesList" (articleDeleted)="refreshArticleList()"></app-my-articles>
 </div>
