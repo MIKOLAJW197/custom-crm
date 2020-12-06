@@ -18,7 +18,7 @@ export class ArticlesService {
   async findAll(paginationQuery: PaginationQueryDto): Promise<Article[]> {
     const { limit, offset } = paginationQuery;
     return this.articleRepository.find({
-      relations: [],
+      relations: ['author', 'comments', 'comments.author'],
       skip: offset,
       take: limit,
     });
@@ -26,7 +26,7 @@ export class ArticlesService {
 
   async findByUser(author: User): Promise<Article[]> {
     return this.articleRepository.find({
-      relations: ['author'],
+      relations: ['author', 'comments', 'comments.author'],
       where: {
         author: {
           id: author.id,
@@ -39,7 +39,7 @@ export class ArticlesService {
     id: string,
     options?: FindOneOptions<Article>,
   ): Promise<Article | NotFoundException> {
-    const article = await this.articleRepository.findOne(id, { ...options });
+    const article = await this.articleRepository.findOne(id, { ...options, relations: ['comments', 'author', 'comments.author'], });
 
     if (!article) {
       return new NotFoundException(`Article ${id} not found`);

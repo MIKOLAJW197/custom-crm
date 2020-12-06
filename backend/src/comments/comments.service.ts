@@ -27,7 +27,7 @@ export class CommentsService {
     }
 
     async getComments(articleId: string) {
-        const article = await this.articlesService.findOne(articleId, { relations: ['comments'] });
+        const article = await this.articlesService.findOne(articleId, { relations: ['comments', 'comments.author'] });
         return (article as Article).comments;
     }
 

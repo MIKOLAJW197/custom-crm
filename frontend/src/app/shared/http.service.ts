@@ -11,11 +11,11 @@ export class HttpService {
 
   // AUTH
   logIn(email: string, password: string) {
-    return this.http.post(`${BASIC_URL}/login`, { email, password });
+    return this.http.post(`${BASIC_URL}/auth/login`, { email, password }, { withCredentials: true });
   }
 
   registerNewUser(email: string, password: string) {
-    return this.http.post(`${BASIC_URL}/register`, { email, password });
+    return this.http.post(`${BASIC_URL}/auth/register`, { email, password });
   }
 
   // ARTICLES
@@ -28,19 +28,19 @@ export class HttpService {
   }
 
   getArticlesByUser() {
-    return this.http.get(`${BASIC_URL}/articles/user`);
+    return this.http.get(`${BASIC_URL}/articles/user`, { withCredentials: true });
   }
 
   addArticle(createArticleDTO: any) {
-    return this.http.post(`${BASIC_URL}/articles`, createArticleDTO);
+    return this.http.post(`${BASIC_URL}/articles`, createArticleDTO, { withCredentials: true });
   }
 
   deleteArticle(articleId: string) {
-    return this.http.delete(`${BASIC_URL}/articles/${articleId}`);
+    return this.http.delete(`${BASIC_URL}/articles/${articleId}`, { withCredentials: true });
   }
 
   // COMMENTS
   addComment(articleId: string, text: string) {
-    return this.http.post(`${BASIC_URL}/comments/${articleId}`, { text });
+    return this.http.post(`${BASIC_URL}/comments/${articleId}`, { text }, { withCredentials: true });
   }
 }

@@ -21,6 +21,10 @@ export class HeaderComponent implements OnDestroy {
     this.router.navigate(this.isUserLogged ? ['/admin'] : ['/login']);
   }
 
+  logOut(): void {
+    this.authService.loggedUser.next(null);
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

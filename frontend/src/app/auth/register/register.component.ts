@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       value: { email, password },
     } = this.registerForm;
     this.loading = true;
-    this.authService.logInUser(email, password).subscribe(
+    this.authService.registerUser(email, password).subscribe(
       (response) => {
         this.authService.setUser(response);
         this.loading = false;
