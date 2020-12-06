@@ -1,0 +1,27 @@
+<div class="d-flex flex-column w-100 align-items-center">
+    <div class="card w-50">
+        <div class="card-body">
+          <h1 class="card-title">Edit article</h1>
+          <form [formGroup]="editArticleForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Title</label>
+              <input type="text" class="form-control" formControlName="title" id="exampleFormControlInput1"
+                placeholder="Title">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput2">Description</label>
+              <input id="exampleFormControlInput2" type="text" class="form-control" formControlName="description"
+                placeholder="Description">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Text:</label>
+              <textarea class="form-control" formControlName="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div *ngIf="loading" class="spinner-border text-primary mr-2" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loading">Edit article</button>
+          </form>
+        </div>
+      </div>
+  </div>

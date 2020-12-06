@@ -24,9 +24,14 @@ export class AdminArticleComponent implements OnInit {
     this.router.navigate([`/article/${this.article.id}`]);
   }
 
+  navigateToEdit(): void {
+    this.router.navigate([`/article/edit/${this.article.id}`]);
+  }
+
   onArticleDelete(): void {
     this.httpService.deleteArticle(this.article.id).subscribe(
       () => {
+        this.articleDeleted.emit();
         this.sharedService.openModal.next({
           isError: false,
           message: 'Article deleted!',

@@ -35,6 +35,10 @@ export class HttpService {
     return this.http.post(`${BASIC_URL}/articles`, createArticleDTO, { withCredentials: true });
   }
 
+  editArticle(editArticleDTO: any, id: string) {
+    return this.http.patch(`${BASIC_URL}/articles/${id}`, editArticleDTO, { withCredentials: true });
+  }
+
   deleteArticle(articleId: string) {
     return this.http.delete(`${BASIC_URL}/articles/${articleId}`, { withCredentials: true });
   }

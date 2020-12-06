@@ -1,11 +1,12 @@
-<div class="card row article" (click)="onArticleClick()">
+<div class="card row article">
     <div class="p-3">
         <h3 class="title">{{article.title}}</h3>
         <p class="text-muted"><span class="glyphicon glyphicon-lock"></span> {{article.description}}
         </p>
         <div class="d-flex justify-content-between">
             <div>
-                <button class="btn btn-primary" [disabled]="true">Edit</button>
+                <button class="btn btn-secondary mr-5" (click)="onArticleClick()">Go to details</button>
+                <button class="btn btn-primary" (click)="navigateToEdit()">Edit</button>
                 <button class="btn btn-danger ml-2" (click)="onArticleDelete()">Delete</button>
             </div>
         </div>

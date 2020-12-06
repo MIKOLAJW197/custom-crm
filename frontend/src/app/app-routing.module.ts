@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { LoggedUserGuard } from './auth/logged-user.guard';
+import { EditArticleComponent } from './admin/edit-article/edit-article.component';
 
 const routes: Routes = [
   { path: '', component: ArticlesComponent },
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPanelComponent,
+    canActivate: [LoggedUserGuard],
+  },
+  {
+    path: 'article/edit/:id',
+    component: EditArticleComponent,
     canActivate: [LoggedUserGuard],
   },
   { path: '**', redirectTo: '' },
